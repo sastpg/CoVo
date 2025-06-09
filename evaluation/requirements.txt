@@ -1,0 +1,6 @@
+torch==2.5.1
+torchmetrics
+flash-attn==2.7.0.post2
+transformers==4.48.3
+vllm==0.7.3
+math-verify[antlr4_13_2]

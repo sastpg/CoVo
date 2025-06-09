@@ -5,7 +5,8 @@
 <a href='https://huggingface.co/datasets/sastpg/CoVo_Dataset'><img src='https://img.shields.io/badge/Hugging_Face-Datasets-blue?style=flat&logo=huggingface&logoColor=%23FFD21E'></a>
 </div>
 
-Official codebase for the paper "Consistent Paths Lead to Truth: Self-Rewarding Reinforcement Learning for LLM Reasoning". The training code is based on the [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF) framework, and the evaluation code is based on the project [Math-Verify](https://github.com/huggingface/Math-Verify).
+> [!NOTE]
+> Official codebase for the paper "Consistent Paths Lead to Truth: Self-Rewarding Reinforcement Learning for LLM Reasoning". The training code is based on the [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF) framework, and the evaluation code is based on the project [Math-Verify](https://github.com/huggingface/Math-Verify).
 
 <div align="center">
 <img src="./images/framework.png">
