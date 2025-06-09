@@ -27,20 +27,21 @@ Con(\tau) = \frac{1}{T} \sum_{i=0}^{T-1} \mathbb{I} \left( \mathbf{D}[i,j] = \mi
 $$
 
 $$
-Vol(\tau) = \frac{1}{T} \max \left\{ i \mid \mathbf{D}[i,j] \neq \min_{0 \leq k < K} \mathbf{D}[i,k]\right\}.
+Vol(\tau) = \frac{1}{T} \max \left\{ i \mid \mathbf{D}[i,j] \neq \min_{0 \leq k < K} \mathbf{D}[i,k] \right\}.
 $$
 
 Then we define the intrinsic reward and curiosity function as follows:
+
 $$
-r_{\text{int}}^{\mathbf{L}}  = \frac{1}{G} \cdot \sum_{i=0}^{G-1} \left( Con(\tau_i) - Vol(\tau_i) \right). \tag{{Linear Intrinsic Reward}}
+r_{\text{int}}^{\mathbf{L}}  = \frac{1}{G} \cdot \sum_{i=0}^{G-1} \left( Con(\tau_i) - Vol(\tau_i) \right).
 $$
 
 $$
-r_{\text{int}}^{\mathbf{V}} = \frac{1}{G} \sqrt{\left( \sum_{i=0}^{G-1} Con(\tau_i) \cos(Vol(\tau_i)) \right)^2 + \left( \sum_{i=0}^{G-1} Con(\tau_i) \sin(Vol(\tau_i)) \right)^2 }. \tag{{Vectorial Intrinsic Reward}}
+r_{\text{int}}^{\mathbf{V}} = \frac{1}{G} \sqrt{\left( \sum_{i=0}^{G-1} Con(\tau_i) \cos(Vol(\tau_i)) \right)^2 + \left( \sum_{i=0}^{G-1} Con(\tau_i) \sin(Vol(\tau_i)) \right)^2 }.
 $$
 
 $$
-r_{\text{cur}} = -\frac{1}{|s_{i+1}|} \sum_{j=|s_i|}^{|s_{i+1}|} \log \pi_{\theta}(s_{i+1}[j] \mid s_{i+1}[: j]) - \ln [KL(P_{i+1}, \mathcal{U}) + 1]. \tag{{Curiosity Reward}}
+r_{\text{cur}} = -\frac{1}{|s_{i+1}|} \sum_{j=|s_i|}^{|s_{i+1}|} \log \pi_{\theta}(s_{i+1}[j] \mid s_{i+1}[: j]) - \ln [KL(P_{i+1}, \mathcal{U}) + 1].
 $$
 
 ## Get Started
