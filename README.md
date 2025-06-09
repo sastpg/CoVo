@@ -19,6 +19,87 @@ We propose a novel self-rewarding Reinforcement Learning (RL) framework to enhan
 ![](./images/vol.png)
 > Normalized distance curve of correct and incorrect trajectories with varying state numbers.
 
+## Reward Calculation
+We first derive the two features (consistency and volatility) of a trajectory $\tau$ as follows:
+$$
+Con(\tau) = \frac{1}{T} \sum_{i=0}^{T-1} \mathbb{I} \left( \mathbf{D}[i,j] = \min_{0 \leq k < K} \mathbf{D}[i,k] \right). \tag{{\bf Consistency}}
+$$
+
+$$
+Vol(\tau) = \frac{1}{T} \max \left\{ i \mid \mathbf{D}[i,j] \neq \min_{0 \leq k < K} \mathbf{D}[i,k]\right\}. \tag{{\bf Volatility}}
+$$
+
+Then we define the intrinsic reward and curiosity function as follows:
+$$
+r_{\text{int}}^{\mathbf{L}}  = \frac{1}{G} \cdot \sum_{i=0}^{G-1} \left( Con(\tau_i) - Vol(\tau_i) \right). \tag{{\bf Linear Intrinsic Reward}}
+$$
+
+$$
+r_{\text{int}}^{\mathbf{V}} = \frac{1}{G} \sqrt{\left( \sum_{i=0}^{G-1} Con(\tau_i) \cos(Vol(\tau_i)) \right)^2 + \left( \sum_{i=0}^{G-1} Con(\tau_i) \sin(Vol(\tau_i)) \right)^2 }. \tag{{\bf Vectorial Intrinsic Reward}}
+$$
+
+$$
+r_{\text{cur}} = -\frac{1}{|s_{i+1}|} \sum_{j=|s_i|}^{|s_{i+1}|} \log \pi_{\theta}(s_{i+1}[j] \mid s_{i+1}[: j]) - \ln [KL(P_{i+1}, \mathcal{U}) + 1]. \tag{{\bf Curiosity Reward}}
+$$
+
+## Get Started
+### Environmental Setup
+We recommend using Python >= 3.10 with the following key packages using conda or docker:
+- ray>=2.40.0
+- torch>=2.5.1
+- vllm>=0.7.2
+- deepspeed>=0.15.0
+- transformers>=4.48.3
+- flash-attn==2.7.0.post2
+
+For conda environment, you can run the following command to install the required packages:
+```bash
+cd CoVo/covo
+conda create -n covo python=3.10
+conda activate covo
+pip install -r requirements.txt
+```
+
+For docker environment, you can run the following command to build the docker image and run the docker container:
+```bash
+cd CoVo/covo/dockerfile
+docker pull nvcr.io/nvidia/pytorch:24.07-py3
+docker build -t covo:v1.0 .  # build docker image
+cd ../..
+docker run --name covo --runtime=nvidia --gpus all -it --shm-size="32g" -v $PWD:/workspace  covo:v1.0 bash
+```
+### Training
+Please run the following command to start training:
+```bash
+ray start --head --node-ip-address 0.0.0.0  # start the ray cluster
+sh examples/scripts/train_reinforce_qwen_ray_rv.sh  # training script
+```
+We provide the description of key parameters in the training script:
+
+| Parameters                 | Description                                                  |
+| -------------------------- | ------------------------------------------------------------ |
+| `--pretrain`               | Absolute path to the pretrained model.                       |
+| `--save_path`              | Absolute path to save the trained model.                     |
+| `--prompt_data`            | Absolute path to instructions used for training.             |
+| `--eval_data`              | Absolute path to evaluation dataset.                         |
+| `--enable_accuracy_filter` | Filter the prompt that only have all the same sampled answers (*i.e.*, either too easy or too hard). |
+| `--enable_curiosity`       | Use curiosity reward for training.                           |
+| `--intrinsic_reward`       | Can only be `riv` or `ril` representing vectorial and linear aggression, respectively. |
+
+
+### Evaluation
+Please refer to `evaluation` directory for detailed evaluation methods. We provide evaluations across three different reasoning domains using 7 popular benchmarks:
+
+| Reasoning Domain | Benchmarks                          |
+| ---------------- | ----------------------------------- |
+| Mathematics      | MATH-500,AMC, GSM8K, Olympiad Bench |
+| Commonsense      | MMLU-Pro, CommonsenseQA             |
+| Science          | GPQA                                |
+
+## Citation
+If you find this repository is useful, please star🌟 this repo and cite🖇️ our paper.
+
+
 
 ## Acknowledgement
 We thank the [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF) for providing the awesome open-source RL infrastructure. We also thank the developers of [Qwen](https://github.com/QwenLM), [Llama](https://github.com/meta-llama) and [DeepSeek-R1](https://github.com/deepseek-ai/DeepSeek-R1) for their innovation and contribution to the open-source community.
