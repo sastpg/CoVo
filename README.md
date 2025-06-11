@@ -28,7 +28,7 @@ Con(\tau) = \frac{1}{T} \sum_{i=0}^{T-1} \mathbb{I} \left( \mathbf{D}[i,j] = \mi
 $$
 
 $$
-Vol(\tau) = \frac{1}{T} \max \{ i \mid \mathbf{D}[i,j] \neq \min_{0 \leq k < K} \mathbf{D}[i,k] \}.
+Vol(\tau) = \frac{1}{T} \max \left{ i \mid \mathbf{D}[i,j] \neq \min_{0 \leq k < K} \mathbf{D}[i,k] \right}.
 $$
 
 Then we define the intrinsic reward and curiosity function as follows:
@@ -69,13 +69,13 @@ cd CoVo/covo/dockerfile
 docker pull nvcr.io/nvidia/pytorch:24.07-py3
 docker build -t covo:v1.0 .  # build docker image
 cd ../..
-docker run --name covo --runtime=nvidia --gpus all -it --shm-size="32g" -v $PWD:/workspace  covo:v1.0 bash
+docker run --name covo --runtime=nvidia --gpus all -it --shm-size="32g" -v $PWD:/workspace covo:v1.0 bash
 ```
 ### Training
 Please run the following command to start training:
 ```bash
 ray start --head --node-ip-address 0.0.0.0  # start the ray cluster
-sh examples/scripts/train_reinforce_qwen_ray_rv.sh  # training script
+sh examples/scripts/train_reinforce_qwen_ray_riv.sh  # training script
 ```
 We provide the description of key parameters in the training script:
 
