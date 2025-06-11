@@ -2,7 +2,7 @@
 This is the code for evaluating the performance of the models.
 
 ## Datasets
-We provide the formated evaluation datasets in the `eval_data` directory:
+We provide the formated evaluation datasets in the `eval_dataset` directory:
 
 | Dataset        | Domain            | Description                                                  |
 | -------------- | ----------------- | ------------------------------------------------------------ |

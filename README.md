@@ -1,6 +1,7 @@
 <h1 align="center"> Consistent Paths Lead to Truth: Self-Rewarding Reinforcement Learning for LLM Reasoning</h1>
 
 <div align="center">
+<a href='https://arxiv.org/abs/2506.08745'><img src='https://img.shields.io/badge/arXiv-2506.08745-%23B31B1B?logo=arxiv'></a> 
 <a href='https://huggingface.co/sastpg/Qwen2.5-3B-Instruct-CoVo'><img src='https://img.shields.io/badge/Hugging_Face-Models-%23FFD21E?style=flat&logo=huggingface&logoColor=%23FFD21E'></a>
 <a href='https://huggingface.co/datasets/sastpg/CoVo_Dataset'><img src='https://img.shields.io/badge/Hugging_Face-Datasets-blue?style=flat&logo=huggingface&logoColor=%23FFD21E'></a>
 </div>
@@ -27,7 +28,7 @@ Con(\tau) = \frac{1}{T} \sum_{i=0}^{T-1} \mathbb{I} \left( \mathbf{D}[i,j] = \mi
 $$
 
 $$
-Vol(\tau) = \frac{1}{T} \max \left\{ i \mid \mathbf{D}[i,j] \neq \min_{0 \leq k < K} \mathbf{D}[i,k] \right\}.
+Vol(\tau) = \frac{1}{T} \max \{ i \mid \mathbf{D}[i,j] \neq \min_{0 \leq k < K} \mathbf{D}[i,k] \}.
 $$
 
 Then we define the intrinsic reward and curiosity function as follows:
@@ -99,8 +100,15 @@ Please refer to `evaluation` directory for detailed evaluation methods. We provi
 | Science          | GPQA                                |
 
 ## Citation
-If you find this repository is useful, please star🌟 this repo and cite🖇️ our paper.
-
+If you find this repository is useful, please star🌟 this repo and cite🔗 our paper.
+```
+@article{zhang2025consistent,
+  title={Consistent Paths Lead to Truth: Self-Rewarding Reinforcement Learning for LLM Reasoning},
+  author={Zhang, Kongcheng and Yao, Qi and Liu, Shunyu and Wang, Yingjie and Lai, Baisheng and Ye, Jieping and Song, Mingli and Tao, Dacheng},
+  journal={arXiv preprint arXiv:2506.08745},
+  year={2025}
+}
+```
 
 
 ## Acknowledgement
