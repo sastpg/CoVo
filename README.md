@@ -7,7 +7,7 @@
 </div>
 
 > [!NOTE]
-> Official codebase for the paper "Consistent Paths Lead to Truth: Self-Rewarding Reinforcement Learning for LLM Reasoning". The training code is based on the [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF) framework, and the evaluation code is based on the project [Math-Verify](https://github.com/huggingface/Math-Verify).
+> Official codebase for the paper "<b><a href="https://arxiv.org/pdf/2506.08745" style="color: #f08a5d;">Consistent Paths Lead to Truth: Self-Rewarding Reinforcement Learning for LLM Reasoning</a></b>". The training code is based on the [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF) framework, and the evaluation code is based on the project [Math-Verify](https://github.com/huggingface/Math-Verify).
 
 <div align="center">
 <img src="./images/framework.png">
@@ -72,7 +72,9 @@ cd ../..
 docker run --name covo --runtime=nvidia --gpus all -it --shm-size="32g" -v $PWD:/workspace covo:v1.0 bash
 ```
 ### Training
-Please run the following command to start training:
+First, you need to prepare the [initial model weights](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct) and download the instruction dataset from [this url](https://huggingface.co/datasets/sastpg/CoVo_Dataset), and put the data under the directory `CoVo/covo/dataset`.
+
+After that, you can run the following command to start training:
 ```bash
 ray start --head --node-ip-address 0.0.0.0  # start the ray cluster
 sh examples/scripts/train_reinforce_qwen_ray_riv.sh  # training script
