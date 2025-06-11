@@ -28,7 +28,7 @@ Con(\tau) = \frac{1}{T} \sum_{i=0}^{T-1} \mathbb{I} \left( \mathbf{D}[i,j] = \mi
 $$
 
 $$
-Vol(\tau) = \frac{1}{T} \max \left{ i \mid \mathbf{D}[i,j] \neq \min_{0 \leq k < K} \mathbf{D}[i,k] \right}.
+Vol(\tau) = \frac{1}{T} \max \left \{ i \mid \mathbf{D}[i,j] \neq \min_{0 \leq k < K} \mathbf{D}[i,k] \right \}.
 $$
 
 Then we define the intrinsic reward and curiosity function as follows:
