@@ -28,8 +28,12 @@ def extract_choice(resp):
 
 def eval_acc(responses, labels, is_math):
     scores = []
-    for response, label in zip(responses, labels):
-        scores.append(check(label, response))
+    if is_math:
+        for response, label in zip(responses, labels):
+            scores.append(check(label, response))
+    else:
+        for response, label in zip(responses, labels):
+            scores.append(label==extract_choice(response))
     acc = {sum(scores) / len(scores)}
     print(f"Average performance: {acc:.4f}")
 
@@ -48,6 +52,7 @@ if __name__ == "__main__":
     is_math = False
     if "math" in eval_dataset or "gsm8k" in eval_dataset or "amc" in eval_dataset or "olympiad" in eval_dataset:
         is_math = True
+    template = prompt_template["math"] if is_math else prompt_template["mmlu"]
 
     # Load the model
     llm = LLM(model=model_path, enable_chunked_prefill=True)
@@ -59,7 +64,7 @@ if __name__ == "__main__":
     dataset = read_jsonl(eval_dataset)
 
     # prompts = [prompt_template.format(item["problem"]) for item in dataset]
-    prompts = [item["problem"] for item in dataset]
+    prompts = [template.format(item["problem"]) for item in dataset]
     labels = [item["answer"] for item in dataset]
 
     # Batch inference

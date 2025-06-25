@@ -31,6 +31,6 @@ pip install -r requirements.txt
 To evaluate the performance of the models, you can run the following command:
 ```bash
 python eval.py --model <local_model_path> --dataset <dataset_name>
-# e.g. python eval.py --model /path/to/local/model --dataset ./eval_data/math500.jsonl
+# e.g. python eval.py --model /path/to/local/model --dataset ./eval_dataset/math500.jsonl
 ```
 

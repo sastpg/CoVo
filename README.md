@@ -7,7 +7,7 @@
 </div>
 
 > [!NOTE]
-> Official codebase for the paper "<b><a href="https://arxiv.org/pdf/2506.08745" style="color: #f08a5d;">Consistent Paths Lead to Truth: Self-Rewarding Reinforcement Learning for LLM Reasoning</a></b>". The training code is based on the [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF) framework, and the evaluation code is based on the project [Math-Verify](https://github.com/huggingface/Math-Verify).
+> Official codebase for the paper **"[Consistent Paths Lead to Truth: Self-Rewarding Reinforcement Learning for LLM Reasoning](https://arxiv.org/pdf/2506.08745)"**. The training code is based on the [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF) framework, and the evaluation code is based on the project [Math-Verify](https://github.com/huggingface/Math-Verify).
 
 <div align="center">
 <img src="./images/framework.png">
@@ -111,7 +111,6 @@ If you find this repository is useful, please star🌟 this repo and cite🔗 ou
   year={2025}
 }
 ```
-
 
 ## Acknowledgement
 We thank the [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF) for providing the awesome open-source RL infrastructure. We also thank the developers of [Qwen](https://github.com/QwenLM), [Llama](https://github.com/meta-llama) and [DeepSeek-R1](https://github.com/deepseek-ai/DeepSeek-R1) for their innovation and contribution to the open-source community.

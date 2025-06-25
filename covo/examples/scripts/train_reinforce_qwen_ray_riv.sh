@@ -3,7 +3,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3
 # reinforce++
 
 ray job submit --address="http://127.0.0.1:8265" \
-   --runtime-env-json='{"working_dir": "/openrlhf/CoVo"}' \
+   --runtime-env-json='{"working_dir": "/openrlhf/CoVo/covo", "excludes":["dataset/", "run_outputs/"]}' \
    -- python3 -m openrlhf.cli.train_ppo_ray \
    --ref_num_nodes 1 \
    --ref_num_gpus_per_node 2 \
@@ -34,8 +34,8 @@ ray job submit --address="http://127.0.0.1:8265" \
    --bf16 \
    --actor_learning_rate 5e-7 \
    --init_kl_coef 1e-4 \
-   --prompt_data /openrlhf/CoVo/dataset/train.jsonl \
-   --eval_data /openrlhf/CoVo/dataset/test.jsonl \
+   --prompt_data /openrlhf/CoVo/covo/dataset/train.jsonl \
+   --eval_data /openrlhf/CoVo/covo/dataset/test.jsonl \
    --input_key problem \
    --label_key solution \
    --apply_chat_template \
@@ -47,12 +47,16 @@ ray job submit --address="http://127.0.0.1:8265" \
    --eval_steps 20 \
    --save_hf_ckpt \
    --flash_attn \
-   --logging_path /openrlhf/CoVo/run_outputs/riv/qwen_riv.jsonl \
+   --logging_path /openrlhf/CoVo/covo/run_outputs/qwen_riv_log.jsonl \
    --enable_accuracy_filter \
-   --save_output_path /openrlhf/CoVo/run_outputs/riv \
+   --save_output_path /openrlhf/CoVo/covo/run_outputs \
    --intrinsic_reward riv
 
 # You could also try
 #   --enable_curiosity
 #   --use_kl_loss \
 #   --kl_estimator k3 | k2 \
+
+# NOTE: You can use wandb to log the training process.
+# --use_wandb YOUR_WANDB_KEY \
+# --wandb_run_name qwen3b_instruct_riv \
