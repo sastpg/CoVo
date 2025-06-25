@@ -90,6 +90,8 @@ We provide the description of key parameters in the training script:
 | `--enable_accuracy_filter` | Filter the prompt that only have all the same sampled answers (*i.e.*, either too easy or too hard). |
 | `--enable_curiosity`       | Use curiosity reward for training.                           |
 | `--intrinsic_reward`       | Can only be `riv` or `ril` representing vectorial and linear aggression, respectively. |
+| `--logging_path`           | The path to save the training logs like rewards, loss, kl divergence, etc. |
+| `--save_output_path`       | The path to save sampling results and other information during training. |
 
 
 ### Evaluation
@@ -114,3 +116,7 @@ If you find this repository is useful, please star🌟 this repo and cite🔗 ou
 
 ## Acknowledgement
 We thank the [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF) for providing the awesome open-source RL infrastructure. We also thank the developers of [Qwen](https://github.com/QwenLM), [Llama](https://github.com/meta-llama) and [DeepSeek-R1](https://github.com/deepseek-ai/DeepSeek-R1) for their innovation and contribution to the open-source community.
+
+
+## Contact
+Please feel free to contact me via email (zhangkc@zju.edu.cn) if you are interested in my research :)
