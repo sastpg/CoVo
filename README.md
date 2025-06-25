@@ -77,6 +77,7 @@ First, you need to prepare the [initial model weights](https://huggingface.co/Qw
 After that, you can run the following command to start training:
 ```bash
 ray start --head --node-ip-address 0.0.0.0  # start the ray cluster
+cd CoVo/covo
 sh examples/scripts/train_reinforce_qwen_ray_riv.sh  # training script
 ```
 We provide the description of key parameters in the training script:
